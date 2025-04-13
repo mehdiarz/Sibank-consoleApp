@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+import java.net.URLEncoder;
 
 public class ApiService {
 
@@ -17,12 +18,12 @@ public class ApiService {
         String url = Main.BASE_URL + "/prcs-by-key?start=0&size=400&order=desc&key=" + key;
         HttpURLConnection conn = createConnection(url, "GET");
         Map<String, Object> response = mapper.readValue(conn.getInputStream(), new TypeReference<Map<String, Object>>() {});
-        List<Map<String, Object>> processesData = (List<Map<String, Object>>) response.get("processes");
+        List<Map<String, Object>> processesData = (List<Map<String, Object>>) response.get("data");
 
         List<ProcessModel> processes = new ArrayList<>();
         for (Map<String, Object> proc : processesData) {
             String id = (String) proc.get("id");
-            String version = (String) proc.get("version");
+            String version = String.valueOf(proc.get("version"));
             processes.add(new ProcessModel(id, version));
         }
 
@@ -31,7 +32,9 @@ public class ApiService {
 
     public static String startProcess(String processId) throws IOException {
         String businessKey = Main.userContext.getUserName() + ":" + processId + ":" + new Date().toString();
-        String url = Main.BASE_URL + "/prcs/" + processId + "/start?businessKey=" + businessKey;
+//        String url = Main.BASE_URL + "/prcs/" + processId + "/start?businessKey=" + businessKey;
+        String encodedKey = URLEncoder.encode(businessKey, "UTF-8");
+        String url = Main.BASE_URL + "/prcs/" + processId + "/start?businessKey=" + encodedKey;
 
         HttpURLConnection conn = createConnection(url, "POST");
         String payload = "{}";
@@ -55,6 +58,7 @@ public class ApiService {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod(method);
         conn.setRequestProperty("Content-Type", "application/json");
+//        conn.setRequestProperty("Expect", "");
         conn.setRequestProperty("token", Main.userContext.getPublicKey());
         conn.setRequestProperty("user", Main.userContext.getUserName());
         conn.setRequestProperty("branch", Main.CONNECTION_BRANCH);
