@@ -28,6 +28,8 @@ public class Main {
         // Timer for scheduled process check
         Timer timer = new Timer();
         timer.schedule(new APICaller(), 0, 60 * 1000); // every 1 minute
+
+
     }
 
     static class APICaller extends TimerTask {
