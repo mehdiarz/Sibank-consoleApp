@@ -1,0 +1,20 @@
+{
+  "mobileNumber": "09193713728",
+  "Secure_ChannelUserName": "lorevantonio57",
+  "Secure_ChannelPassword": "73368287",
+  "initiator": "9193713728",
+  "deviceId": "UP1A.231005.017",
+  "deviceModel": "samsung Android 13",
+  "clientIp": "37.27.36.231",
+  "SERVER_IP": "sibank.esinabank.ir",
+  "PROTOCOL": "https://",
+  "PORT": ":443",
+  "WEB_SERVICE_PATH": "/hostRest/xti22",
+  "CONNECTION_BRANCH": "BR",
+  "SPECIFIC_KEY": "Sina_SpecificProcesses",
+  "userContext": {
+    "userName": "xti22adm",
+    "deviceId": "BR",
+    "publicKey": "123456"
+  }
+}
