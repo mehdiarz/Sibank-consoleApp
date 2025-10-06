@@ -1,6 +1,6 @@
 # Sibank Console App
 
-A lightweight **console-based banking system** built with **C# (.NET)**.  
+A lightweight **console-based banking system** built with **JAVA.  
 This application simulates core banking operations such as account creation, deposits, withdrawals, and transaction history — all within a terminal interface.
 
 ---
@@ -16,8 +16,7 @@ This application simulates core banking operations such as account creation, dep
 ---
 
 ## 🧱 Tech Stack
-- **Language:** C#  
-- **Framework:** .NET Core / .NET 6+  
+- **Language:** JAVA   
 - **Type:** Console Application  
 
 ---
